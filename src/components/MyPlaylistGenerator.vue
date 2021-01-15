@@ -3,7 +3,7 @@
         <div id="receipt">
             <div class="receiptContainer">
                 <h2 class="logo">
-                    RECEIPTIFY
+                    TEPIFY
                 </h2>
                 <p class="period">
                     My PlayList Item
@@ -82,6 +82,11 @@
                     </p>
                     <img width="90" height="90" :src="qrCodeI" alt="" srcset="">
                     <p class="website">
+                      tepify.herokuapp.com
+                    </p>
+                    <p class="mt-3">
+                      Modify By: Teerut<br>
+                      Some Source Code By: Michellexliu
                     </p>
                 </div>
             </div>

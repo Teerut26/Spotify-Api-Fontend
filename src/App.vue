@@ -20,7 +20,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm">
+          <!-- <div class="col-sm">
             <div class="card text-left">
               <img class="card-img-top" src="holder.js/100px180/" alt="">
               <div class="card-body">
@@ -29,7 +29,7 @@
                       class="fas fa-external-link-alt"></i></button></p>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="col-sm">
             <div class="card text-left">
               <img class="card-img-top" src="holder.js/100px180/" alt="">

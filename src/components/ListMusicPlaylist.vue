@@ -6,11 +6,14 @@
                     TEPIFY
                 </h2>
                 <p class="period">
-                    My PlayList Track
+                    แทร็กในเพลลิสต์ของฉัน
                 </p>
                 
                 <p class="date">
-                    OWNER: {{UpperCase(ownerPlaylist)}}
+                    <nobr>OWNER: {{UpperCase(ownerPlaylist)}}</nobr>
+                </p>
+                <p class="date">
+                    <nobr>ORDER: #{{getlengthOrder(order)}}</nobr>
                 </p>
                 <p class="date">
                     PLAYLISTTITLE: {{UpperCase(playListTitle)}}
@@ -60,7 +63,7 @@
                                 ITEM COUNT:
                             </td>
                             <td class="length">
-                                {{getlength(countMusic)}}
+                                <center>{{countMusic}}</center>
                             </td>
                         </tr>
                         <tr class="total-counts-end">
@@ -68,7 +71,7 @@
                                 TOTAL:
                             </td>
                             <td class="length">
-                                {{millisToMinutesAndSeconds(sumDuration_ms)}}
+                                <center>{{millisToMinutesAndSeconds(sumDuration_ms)}}</center>
                             </td>
                         </tr>
                     </tbody>
@@ -79,9 +82,7 @@
                 <p class="date">
                     AUTH CODE: {{UpperCase(id)}}
                 </p>
-                <p class="date">
-                    OWNER: {{UpperCase(ownerPlaylist)}}
-                </p>
+                
                 <div class="thanks">
                     <p>
                         ขอบคุณสำหรับการเยี่ยมชม!!
@@ -90,15 +91,12 @@
                     <p class="website">
                       tepify.herokuapp.com
                     </p>
-                    <p class="mt-3">
-                      Modify By: Teerut<br>
-                      Some Source Code By: Michellexliu
-                    </p>
+                    
                 </div>
             </div>
         </div>
             
-            <center><button type="button mt-3" @click="capShot()" class="btn btn-primary ml-1">Download</button></center>
+            <center><button type="button mt-3" @click="capShot()" class="btn btn-primary mb-3">Download</button></center>
             
 
     </div>
@@ -116,7 +114,8 @@
             access_token: String,
             id: String,
             ownerPlaylist: String,
-            playListTitle:String
+            playListTitle:String,
+            order:Number
         },
         data() {
             return {
@@ -132,6 +131,16 @@
         methods: {
             getlength(num){
                 if ((num.toString()).length < 2) {
+                    return "0"+num
+                }else{
+                    return num
+                }
+                
+            },
+            getlengthOrder(num){
+                if ((num.toString()).length < 2) {
+                    return "00"+num
+                }else if ((num.toString()).length < 3) {
                     return "0"+num
                 }else{
                     return num
@@ -259,8 +268,8 @@
     }
 </script>
 <style scoped>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap");
+    /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap"); */
     @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
     h1 {

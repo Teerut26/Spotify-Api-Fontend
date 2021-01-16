@@ -6,11 +6,11 @@
                     TEPIFY
                 </h2>
                 <p class="period">
-                    My PlayList Item
+                    รายการเพลลิสต์ของฉัน
                 </p>
-                
+
                 <p class="date">
-                    <!-- OWNER: {{UpperCase(ownerPlaylist)}} -->
+                    <nobr>OWNER: {{UpperCase(qrCode)}}</nobr>
                 </p>
                 <p class="date">
                     <!-- PLAYLISTTITLE: {{UpperCase(playListTitle)} -->
@@ -18,14 +18,14 @@
                 <p class="date">
                     {{thaiDate().dayThai}}, {{thaiDate().monthThai}} {{thaiDate().dayNum}}, {{thaiDate().yearEN}}
                 </p>
-                
+
                 <table class="tracks">
                     <thead>
                         <tr>
                             <td class="begin">
                                 QTY
                             </td>
-                            
+
                             <td>
                                 TITLE
                             </td>
@@ -40,7 +40,7 @@
                             <!-- <td v-if="i.length < 2" class="begin">
                                 df{{i+1}} werwer
                             </td> -->
-                            
+
                             <td class="begin">
                                 {{getlength(i+1)}}
                             </td>
@@ -48,7 +48,7 @@
                                 {{UpperCase(item.name)}}
 
 
-                                
+
                             </td>
                             <td class="length">
                                 <center>{{item.tracks.total}}</center>
@@ -59,7 +59,7 @@
                                 ITEM COUNT:
                             </td>
                             <td class="length">
-                                {{getlengthObj(dataObj)}}
+                                <center>{{getlengthObj(dataObj)}}</center>
                             </td>
                         </tr>
                         <tr class="total-counts-end">
@@ -67,7 +67,7 @@
                                 TOTAL:
                             </td>
                             <td class="length">
-                              {{sumItem}}
+                                <center>{{sumItem}}</center>
                             </td>
                         </tr>
                     </tbody>
@@ -75,25 +75,22 @@
                 <p class="date">
                     CARD #: **** **** **** {{thaiDate().yearEN}}
                 </p>
-                
+
                 <div class="thanks">
                     <p>
                         ขอบคุณสำหรับการเยี่ยมชม!!
                     </p>
                     <img width="90" height="90" :src="qrCodeI" alt="" srcset="">
                     <p class="website">
-                      tepify.herokuapp.com
+                        tepify.herokuapp.com
                     </p>
-                    <p class="mt-3">
-                      Modify By: Teerut<br>
-                      Some Source Code By: Michellexliu
-                    </p>
+
                 </div>
             </div>
         </div>
-            
-            <center><button type="button mt-3" @click="capShot()" class="btn btn-primary ml-1">Download</button></center>
-            
+
+        <center><button type="button mt-3" @click="capShot()" class="btn btn-primary mb-3">Download</button></center>
+
 
     </div>
 </template>
@@ -101,38 +98,38 @@
 <script>
     var html2canvas = require('html2canvas');
     var QRCode = require('qrcode')
-    
+
 
     export default {
         name: 'MyPlaylistGenerator',
         props: {
-            dataObj:Object,
+            dataObj: Object,
             qrCode: String,
-            sumItem:Number
+            sumItem: Number
         },
         data() {
             return {
                 sumDuration_ms: 0,
                 countMusic: 0,
-                qrCodeI:""
+                qrCodeI: ""
             }
         },
         mounted() {
             this.genOrCode(this.qrCode)
-            
+
         },
         methods: {
-            getlength(num){
+            getlength(num) {
                 if ((num.toString()).length < 2) {
-                    return "0"+num
-                }else{
+                    return "0" + num
+                } else {
                     return num
                 }
-                
+
             },
-            getlengthObj(obj){
+            getlengthObj(obj) {
                 return obj.length
-                
+
             },
             genOrCode(text) {
                 var opts = {
@@ -140,10 +137,9 @@
                     type: 'image/png',
                     quality: 0.3,
                     margin: 0,
-                    color: {
-                    }
+                    color: {}
                 }
-                QRCode.toDataURL(text,opts)
+                QRCode.toDataURL(text, opts)
                     .then(url => {
                         this.qrCodeI = url
                     })
@@ -155,14 +151,14 @@
                 var thmonth = new Array("มกราคม", "กุมภาพันธ์", "มีนาคม",
                     "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน",
                     "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
-                    var obj = {
-                        dayThai:thday[now.getDay()],
-                        dayNum:now.getDay(),
-                        monthThai:thmonth[now.getMonth()],
-                        monthNum:now.getMonth(),
-                        yearThai:now.getFullYear()+543,
-                        yearEN:now.getFullYear()
-                    }
+                var obj = {
+                    dayThai: thday[now.getDay()],
+                    dayNum: now.getDay(),
+                    monthThai: thmonth[now.getMonth()],
+                    monthNum: now.getMonth(),
+                    yearThai: now.getFullYear() + 543,
+                    yearEN: now.getFullYear()
+                }
                 return obj
             },
             // thaiDate() {
@@ -212,14 +208,14 @@
             },
         },
         created() {
-          
+
             // this.getData()
         }
     }
 </script>
 <style scoped>
-    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
-    @import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap");
+    /* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap"); */
     @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
     h1 {
@@ -257,7 +253,7 @@
     .period {
         /* font-family: "Helvetica Neue", Helvetica, sans-serif;
          */
-         font-family: 'Kanit', sans-serif;
+        font-family: 'Kanit', sans-serif;
         font-size: 1.5rem;
         text-align: center;
         padding-bottom: 15px;
@@ -356,7 +352,7 @@
     }
 
     .receiptContainer {
-        
+
         background-image: url("../assets/wrinkled-paper-texture-7.jpg");
         background-position: center;
         position: center;
